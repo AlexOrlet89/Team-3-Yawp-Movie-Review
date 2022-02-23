@@ -2,7 +2,7 @@ import { renderMovie } from '../render-utils.js';
 
 const test = QUnit.test;
 
-test('renderMovie should create a div with a class of movie and render cha', (expect) => {
+test('renderMovie should create a div with a class of movie and render the title, image and anchor tag to click', (expect) => {
     //Arrange
     // Set up your arguments and expectations
     const expected = true;
