@@ -1,0 +1,29 @@
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+#detail {
+    margin-left: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#reviews {
+    margin-right: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    width: 100px;
+}
+
+.email {
+    font-weight: bold;
+    color: blue;
+}
