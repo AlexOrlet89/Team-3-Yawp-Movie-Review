@@ -18,3 +18,5 @@ export function renderMovie(movie) {
 
     return a;
 }
+
+console.log('useless');
