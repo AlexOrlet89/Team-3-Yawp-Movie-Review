@@ -5,7 +5,7 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function getMovies() {
     const response = await client.from('movies').select(`*, reviews (*)`);
-
+    // console.log(response);
     return checkError(response);
 }
 
