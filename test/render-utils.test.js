@@ -2,7 +2,7 @@ import { renderMovie } from '../render-utils.js';
 
 const test = QUnit.test;
 
-test('time to test a function', (expect) => {
+test('renderMovie', (expect) => {
     //Arrange
     // Set up your arguments and expectations
     const expected = true;
