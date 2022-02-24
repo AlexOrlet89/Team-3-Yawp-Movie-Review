@@ -1,14 +1,15 @@
-import { getMovieAndReviews, getMovies } from '../fetch-utils.js';
+import { getMovieAndReviews, getMovies, createReview } from '../fetch-utils.js';
 import { renderMovieDetail, renderReview } from '../render-utils.js';
 
 const main = document.querySelector('main');
 const reviewsSection = document.querySelector('#user-reviews');
 
-window.addEventListener('load', async () => {
+const params = new URLSearchParams(window.location.search);
+// const movies = await getMovies();
+console.log(params);
 
-    const params = new URLSearchParams(window.location.search);
-    // const movies = await getMovies();
-    console.log(params);
+window.addEventListener('load', async () => {
+    
     const movie = await getMovieAndReviews(params.get('id'));
     console.log(movie.reviews);
 
@@ -22,6 +23,22 @@ window.addEventListener('load', async () => {
         reviewsSection.append(reviewEl);
     }
 
-
-
 });
+
+const form = document.getElementById('review-form');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formInfo = new FormData(form);
+
+    const review = {
+        review: formInfo.get('review'),
+        movie_id: params.get('id'),
+    };
+    await createReview(review);
+    form.reset();
+
+    location.reload();
+});
+

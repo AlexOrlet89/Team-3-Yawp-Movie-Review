@@ -28,6 +28,7 @@ export async function createReview(review) {
     return checkError(response);
 }
 
+
 export function getUser() {
     return client.auth.session() && client.auth.session().user;
 }
