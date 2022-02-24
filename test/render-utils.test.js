@@ -5,7 +5,7 @@ const test = QUnit.test;
 test('renderMovie should create a div with a class of movie and render the title, image and anchor tag to click', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = `<a href="./review-page/?id=1"><div class="movie"><p class="movie-title">Episode IV - A New Hope</p><img src="/assets/movie1.jpg" class="movie-image"></div></a>`;
+    const expected = `<a href="/review-page/?id=1"><div class="movie"><p class="movie-title">Episode IV - A New Hope</p><img src="/assets/movie1.jpg" class="movie-image"></div></a>`;
     
     //Act 
     // Call the function you're testing and set the result to a const

@@ -11,7 +11,7 @@ export function renderMovie(movie) {
     img.classList.add('movie-image');
 
     const a = document.createElement('a');
-    a.href = `./review-page/?id=${movie.id}`;
+    a.href = `/review-page/?id=${movie.id}`;
 
     containerDiv.append(titleP, img);
     a.append(containerDiv);
