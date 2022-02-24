@@ -15,6 +15,19 @@ export async function getMovieAndReviews(movie_id) {
     return checkError(response);
 }
 
+
+export async function createReview(review) {
+    const response = await client.from('reviews').insert([
+        { ...review,
+            // review: review.text,
+            // movie_id: review.movieId,
+            // user_id: review.userId,
+            user_id: client.auth.user().id, 
+            email: client.auth.user().email, }
+    ]);
+    return checkError(response);
+}
+
 export function getUser() {
     return client.auth.session() && client.auth.session().user;
 }
