@@ -3,7 +3,7 @@ main {
     flex-direction: row;
 }
 
-#detail {
+.detail-section {
     margin-left: 20px;
     width: 50%;
     display: flex;
