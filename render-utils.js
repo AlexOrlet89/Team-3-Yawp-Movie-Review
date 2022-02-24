@@ -43,3 +43,19 @@ export function renderMovieDetail(movie) {
     sectionDetail.append(h1, img, detailsContainer);
     return sectionDetail;
 }
+
+export function renderReview(review) {
+    const reviewDiv = document.createElement('div');
+    reviewDiv.classList.add('review');
+    
+    const reviewP = document.createElement('p');
+    reviewP.textContent = `${review.review}`;
+    
+    const emailSpan = document.createElement('span');
+    emailSpan.classList.add('email');
+    emailSpan.textContent = `${review.email}`;
+    reviewP.append(emailSpan);
+    reviewDiv.append(reviewP);
+    return reviewDiv;
+}
+// renderReview();

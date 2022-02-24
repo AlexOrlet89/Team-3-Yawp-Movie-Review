@@ -1,7 +1,8 @@
 import { getMovieAndReviews, getMovies } from '../fetch-utils.js';
-import { renderMovieDetail } from '../render-utils.js';
+import { renderMovieDetail, renderReview } from '../render-utils.js';
 
 const main = document.querySelector('main');
+const reviewsSection = document.querySelector('#user-reviews');
 
 window.addEventListener('load', async () => {
 
@@ -9,10 +10,18 @@ window.addEventListener('load', async () => {
     // const movies = await getMovies();
     console.log(params);
     const movie = await getMovieAndReviews(params.get('id'));
-    console.log(movie);
+    console.log(movie.reviews);
 
-    main.innerHTML = '';
+    // main.innerHTML = '';
     const detailSection = renderMovieDetail(movie);
-    main.append(detailSection);
+    main.prepend(detailSection);
+    
+    for (let review of movie.reviews) {
+        const reviewEl = renderReview(review);
+        console.log(review, reviewEl);
+        reviewsSection.append(reviewEl);
+    }
+
+
 
 });
