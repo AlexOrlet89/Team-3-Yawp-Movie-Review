@@ -3,6 +3,32 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+export async function getMovies() {
+    const response = await client.from('movies').select(`*, reviews (*)`);
+    console.log(response);
+    return checkError(response);
+}
+
+export async function getMovieAndReviews(movie_id) {
+    const response = await client.from('movies').select('*, reviews (*)').match({ id: movie_id }).single();
+    console.log(response);
+    return checkError(response);
+}
+
+
+export async function createReview(review) {
+    const response = await client.from('reviews').insert([
+        { ...review,
+            // review: review.text,
+            // movie_id: review.movieId,
+            // user_id: review.userId,
+            user_id: client.auth.user().id, 
+            email: client.auth.user().email, }
+    ]);
+    return checkError(response);
+}
+
+
 export function getUser() {
     return client.auth.session() && client.auth.session().user;
 }
@@ -37,6 +63,6 @@ export async function logout() {
     return (window.location.href = '../');
 }
 
-// function checkError({ data, error }) {
-//     return error ? console.error(error) : data;
-// }
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
+}
